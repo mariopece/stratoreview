@@ -49,7 +49,7 @@
               </div>
             </div>
           </div>
-          <div class="details">Plalist Item 1</div>
+          <div class="details">Original Plate</div>
         </li>
       
         <li class="playlist-item">
@@ -60,7 +60,7 @@
               </div>
             </div>
           </div>
-          <div class="details">Plalist Item 1</div>
+          <div class="details">Version 01</div>
         </li>
       
         <li class="playlist-item">
@@ -71,9 +71,29 @@
               </div>
             </div>
           </div>
-          <div class="details">Plalist Item 1</div>
+          <div class="details">Version 02</div>
         </li>
         
+        <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0004" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v04.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Version 02</div>
+        </li>
+      <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0005" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v06.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Version 02</div>
+        </li>
       </ul>
     </div>
 
@@ -119,7 +139,7 @@ $( document ).ready(function() {
     })
 
 $.each($('.thumbvid'),function(){
-  $('.bigContainer').prepend('<video id="'+$(this).attr('data-id')+'" controls loop="true" class="img-responsive fullPlayer" src="'+$(this).attr('src')+'"></video>')
+  $('.bigContainer').prepend('<video id="'+$(this).attr('data-id')+'" controls loop="true" style="display:none" class="img-responsive fullPlayer" src="'+$(this).attr('src')+'"></video>')
 })
 
 });

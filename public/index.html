@@ -1,84 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
+  <meta charset="UTF-8">
+  <title>Video Playlists</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.11/css/perfect-scrollbar.css'>
+<link rel='stylesheet prefetch' href='https://rawgit.com/kenwheeler/slick/master/slick/slick.css'>
+<link rel='stylesheet prefetch' href='https://rawgit.com/kenwheeler/slick/master/slick/slick-theme.css'>
+
+      <link rel="stylesheet" href="css/style.css">
 <style type="text/css">
-html,body{
-    height:100%;    
-    margin:0;
-    padding:0;
-    border:0;
-}
-
-div{
-    margin:0;
-    border:0;
-}
-
-textarea {
-    margin:0;
-    border:0;
-    padding:0;
-    height:100%;
-    width:100%;
-}
-
-.content{
-    display:table;
-    width:100%;
-    border-collapse:separate;
-    height:80%;
-    overflow: hidden;
-    background: #1b1b1b;
-}
-
-.Col{
-    display:table-cell;
-    width:30%;
-    height:100%;
-}
-
-#header,#footer{
-    height:10%;
-    position:relative;
-    z-index:1;
-			font-family: verdana;
-			font-weight: bold;
-			color:white;
-			padding:10px;
-			background: black;
-
-}
-
-.fullvideocontainer{
-	width:100%;
-}
-
-.video{
-	float:left;
-}
-
+  .fullPlayer{
+    position:absolute;
+    top:0px;
+  }
 </style>
+  
 </head>
+
 <body>
-<div id="header">StratoStorm Client Reviewer</div>
-<div class="content">
-   
-    <div id="center" class="Col">
+  
+<div class="container">
+<img src="http://www.stratostorm.com/vfx/wp-content/uploads/2014/07/logo.png">
+  <h1 class="text-center">KOLESTON_0010</h1>
+  <div class="video-playlist-wrap">
 
-	<video controls loop="true" class="fullvideo" src="videos/KOLESTON_0010_comp_v02.mov" style="
-    height: 100%;></video>
+    <div class="player-wrap">
+      <div class="fluid-ratio-wrap">
+        <div class="fluid-ratio-inner bigContainer">
+          
+          
 
-
+        </div>
+      </div>
     </div>
-    
+
+    <div class="playlist-wrap">
+      <ul class="remove-bullets scroll-wrap">
+
+        <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0001" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v01.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Original Plate</div>
+        </li>
+      
+        <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0002" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v02.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Version 01</div>
+        </li>
+      
+        <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0003" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v03.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Version 02</div>
+        </li>
+        
+        <li class="playlist-item">
+          <div class="thumb">
+            <div class="fluid-ratio-wrap">
+              <div class="fluid-ratio-inner">
+                <video data-id="0004" class="img-responsive thumbvid" src="videos/KOLESTON_0010_comp_v04.mov"></video>
+              </div>
+            </div>
+          </div>
+          <div class="details">Version 02</div>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
 </div>
-<div id="footer">	
-	<div class="video"><video width="200" src="videos/KOLESTON_0010_comp_v02.mov"></video></div>
-	<div class="video"><video width="200" src="videos/KOLESTON_0010_comp_v03.mov"></video></div>
-	<div class="video"><video width="200" src="videos/KOLESTON_0010_comp_v05.mov"></video></div>
-</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.11/js/min/perfect-scrollbar.jquery.min.js'></script>
+<script src='https://rawgit.com/kenwheeler/slick/master/slick/slick.js'></script>
+
+    <script src="js/index.js">
+
+
+
+    </script>
+
+<script type="text/javascript">
+
+
+$( document ).ready(function() {
+    $('.thumbvid').on('click',function(){
+      
+      $('.fullPlayer').css('display','none')
+      
+
+      $('#'+$(this).attr('data-id')).css('display','inherit')
+
+
+      if ( $('.active').size() > 0 ){
+
+        $.each( $('.fullPlayer') , function(){
+          console.log('here')
+        $(this)[0].currentTime = $('.active')[0].currentTime
+
+      })
+
+      }
+
+      $('.fullPlayer').removeClass( "active" )
+      $('#'+$(this).attr('data-id')).addClass('active')
+
+      
+
+    })
+
+$.each($('.thumbvid'),function(){
+  $('.bigContainer').prepend('<video id="'+$(this).attr('data-id')+'" controls loop="true" style="display:none" class="img-responsive fullPlayer" src="'+$(this).attr('src')+'"></video>')
+})
+
+});
+
+
+</script>
+
 </body>
 </html>
-
-
-
